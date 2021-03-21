@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="name">Please enter the name.</string>
+    <string name="position">Enter the position.</string>
+    <string name="sex">Enter the gender.</string>
+    <string name="salary">Enter the salary.</string>
+    <string name="status">Status</string>
+    <string name="register">REGISTER</string>
+    <string name="title">Employee registration.</string>
+</resources>

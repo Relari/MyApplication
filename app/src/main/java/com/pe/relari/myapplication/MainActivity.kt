@@ -3,6 +3,7 @@ package com.pe.relari.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import com.pe.relari.myapplication.business.model.api.EmployeeRequest
@@ -33,14 +34,36 @@ class MainActivity : AppCompatActivity() {
 
         val txtName = findViewById<TextView>(R.id.txtName)
         val txtPosition = findViewById<TextView>(R.id.txtPosition)
-        val txtSex = findViewById<TextView>(R.id.txtSex)
+        val txtGender = findViewById<Spinner>(R.id.txtGender)
         val txtSalary = findViewById<TextView>(R.id.txtSalary)
+
+        val genderCode = findByGenderDescription(txtGender.selectedItem.toString())
 
         return EmployeeRequest(
             txtName.text.toString(),
             txtPosition.text.toString(),
-            txtSex.text.toString(),
+            genderCode,
             txtSalary.text.toString().toDouble())
 
     }
+
+    private fun genders(): List<Gender> {
+
+        val gender1 = Gender(GenderEnum.M, "Male")
+        val gender2 = Gender(GenderEnum.F, "Female")
+
+        return listOf(gender1, gender2)
+    }
+
+    private fun findByGenderDescription(genderDescription: String): String {
+        return genders()
+            .filter { it.description == genderDescription }
+            .map { it.code.name }
+            .first()
+    }
+
 }
+
+data class Gender(val code: GenderEnum, val description: String)
+
+enum class GenderEnum { M, F }

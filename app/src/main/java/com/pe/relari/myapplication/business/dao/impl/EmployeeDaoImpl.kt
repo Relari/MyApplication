@@ -36,6 +36,9 @@ class EmployeeDaoImpl(private val restConfiguration: RestConfiguration = RestCon
     return Single.fromCallable { mapEmployeeEntity(employee) }
             .flatMapCompletable{ restConfiguration.employeeRepository().save(it) }
             .subscribeOn(Schedulers.io())
+            .doOnSubscribe{  Log.d("","Registering the employee.") }
+            .doOnError { Log.e("", it.message.toString()) }
+            .doOnComplete { Log.i("", "Registered employee.") }
   }
 
   override fun save2(employee: Employee) {
@@ -50,7 +53,7 @@ class EmployeeDaoImpl(private val restConfiguration: RestConfiguration = RestCon
               override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
                   // success
                   val isSave = response?.isSuccessful
-                  Log.i("Employee saved", Gson().toJson(MessageResponse(isSave.toString().toBoolean())))
+                  Log.i("Registered employee.", Gson().toJson(MessageResponse(isSave.toString().toBoolean())))
               }
           })
   }

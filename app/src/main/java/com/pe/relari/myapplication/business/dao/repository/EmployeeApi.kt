@@ -2,7 +2,6 @@ package com.pe.relari.myapplication.business.dao.repository
 
 
 import com.pe.relari.myapplication.business.model.entity.EmployeeEntity
-import java.util.List
 
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -21,4 +20,7 @@ interface EmployeeApi {
 
   @POST("business/firebase/v1/employees")
   fun save2(@Body employeeEntity: EmployeeEntity): Call<Void>
+
+  @GET("business/firebase/v1/employees")
+  fun findAll2(): Call<List<EmployeeEntity>>
 }

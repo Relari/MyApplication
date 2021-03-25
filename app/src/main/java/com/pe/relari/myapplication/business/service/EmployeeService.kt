@@ -11,4 +11,6 @@ interface EmployeeService {
   fun save(employee: Employee): Completable
 
   fun save2(employee: Employee)
+
+  fun findAll2(): List<Employee>
 }

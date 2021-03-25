@@ -21,4 +21,8 @@ class EmployeeServiceImpl(private val employeeDao: EmployeeDao = EmployeeDaoImpl
     return employeeDao.findAll()
   }
 
+  override fun findAll2(): List<Employee> {
+    return employeeDao.findAll2()
+  }
+
 }

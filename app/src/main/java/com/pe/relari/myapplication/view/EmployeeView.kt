@@ -45,4 +45,8 @@ class EmployeeView(private val employeeService: EmployeeService = EmployeeServic
      employeeService.save2(employee)
   }
 
+  fun findAll2(): List<EmployeeResponse> {
+    return employeeService.findAll2()
+        .map { mapEmployeeResponse(it) }
+  }
 }

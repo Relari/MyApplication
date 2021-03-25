@@ -10,4 +10,7 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string name="nextRegister">Register</string>
+    <string name="nextReport">Report</string>
+    <string name="nextOption">Option</string>
 </resources>

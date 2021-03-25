@@ -1,5 +1,6 @@
 package com.pe.relari.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -26,6 +27,11 @@ class MainActivity : AppCompatActivity() {
             employeeView.save2(employeeRequest)
 
             Toast.makeText(this, employeeRequest.toString(), Toast.LENGTH_LONG).show()
+        }
+
+        val btnOption = findViewById<Button>(R.id.btnOption)
+        btnOption.setOnClickListener {
+            startActivity(Intent(this, EmployeeOption::class.java))
         }
 
     }

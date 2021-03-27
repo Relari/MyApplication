@@ -15,7 +15,7 @@ class EmployeeOption : AppCompatActivity() {
         val report = findViewById<Button>(R.id.btnNextReport)
 
         register.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, EmployeeRegister::class.java))
         }
 
         report.setOnClickListener {

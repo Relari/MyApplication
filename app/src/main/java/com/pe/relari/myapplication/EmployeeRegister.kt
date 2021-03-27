@@ -1,6 +1,5 @@
 package com.pe.relari.myapplication
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,11 +9,11 @@ import android.widget.Toast
 import com.pe.relari.myapplication.business.model.api.EmployeeRequest
 import com.pe.relari.myapplication.view.EmployeeView
 
-class MainActivity : AppCompatActivity() {
+class EmployeeRegister : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_employee_register)
 
         val employeeView = EmployeeView()
 
@@ -27,11 +26,6 @@ class MainActivity : AppCompatActivity() {
             employeeView.save2(employeeRequest)
 
             Toast.makeText(this, employeeRequest.toString(), Toast.LENGTH_LONG).show()
-        }
-
-        val btnOption = findViewById<Button>(R.id.btnOption)
-        btnOption.setOnClickListener {
-            startActivity(Intent(this, EmployeeOption::class.java))
         }
 
     }

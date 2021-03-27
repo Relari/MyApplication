@@ -59,27 +59,24 @@ class EmployeeDaoImpl(private val restConfiguration: RestConfiguration = RestCon
   }
 
   override fun findAll2(): List<Employee> {
-      restConfiguration.employeeRepository().findAll2()
-          .enqueue(object : Callback<List<EmployeeEntity>> {
-              override fun onFailure(call: Call<List<EmployeeEntity>>?, t: Throwable?) {
-                  // failure
-                  t?.printStackTrace()
-              }
+//      restConfiguration.employeeRepository().findAll2()
+//          .enqueue(object : Callback<List<EmployeeEntity>> {
+//              override fun onFailure(call: Call<List<EmployeeEntity>>?, t: Throwable?) {
+//                  // failure
+//                  t?.printStackTrace()
+//              }
+//
+//              override fun onResponse(call: Call<List<EmployeeEntity>>?, response: Response<List<EmployeeEntity>>?) {
+//                  // success
+//                  val employees = response?.body()
+////                      .map { mapEmployee(it) }
+//                  Log.i("Registered employee.", Gson().toJson(employees))
+//              }
+//          })
 
-              override fun onResponse(call: Call<List<EmployeeEntity>>?, response: Response<List<EmployeeEntity>>?) {
-                  // success
-                  val employees = response?.body()
-//                      .map { mapEmployee(it) }
-                  Log.i("Registered employee.", Gson().toJson(employees))
-              }
-          })
-
-      return listOf(Employee(
-          "Renzo",
-          "Developer",
-          "M",
-          3000.0,
-          true))
+      return listOf(
+          Employee("Renzo", "Developer", "M", 3000.0, true),
+          Employee("Irene", "Leader", "F", 5000.0, true))
   }
 
   private fun mapEmployeeEntity(employee: Employee): EmployeeEntity {

@@ -52,8 +52,8 @@ class EmployeeDaoImpl(private val restConfiguration: RestConfiguration = RestCon
 
               override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
                   // success
-                  val isSave = response?.isSuccessful
-                  Log.i("Registered employee.", Gson().toJson(MessageResponse(isSave.toString().toBoolean())))
+                  val isSave = response?.isSuccessful!!
+                  Log.i("Registered employee.", Gson().toJson(MessageResponse(isSave)))
               }
           })
   }

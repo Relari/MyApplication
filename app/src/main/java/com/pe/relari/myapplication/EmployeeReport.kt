@@ -1,7 +1,6 @@
 package com.pe.relari.myapplication
 
 import android.util.Log
-import com.google.gson.Gson
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+private const val TAG_EMPLOYEE: String = "EMPLOYEE"
 class EmployeeReport : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +33,10 @@ class EmployeeReport : AppCompatActivity() {
                   // success
                   val employees = response?.body()!!
                       .map { mapEmployee(it) }
+                      .onEach { Log.i(TAG_EMPLOYEE, it.toString()) }
 
                   initRecycler(employees)
 
-                  Log.i("Registered employee.", Gson().toJson(employees))
               }
           })
 

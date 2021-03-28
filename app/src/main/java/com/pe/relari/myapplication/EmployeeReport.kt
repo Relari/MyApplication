@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.pe.relari.myapplication.business.mapper.EmployeeMapper
 import com.pe.relari.myapplication.business.model.business.Employee
 import com.pe.relari.myapplication.business.model.entity.EmployeeEntity
 import com.pe.relari.myapplication.config.RestConfiguration
@@ -31,7 +32,7 @@ class EmployeeReport : AppCompatActivity() {
               override fun onResponse(call: Call<List<EmployeeEntity>>?, response: Response<List<EmployeeEntity>>?) {
                   // success
                   val employees = response?.body()!!
-                      .map { mapEmployee(it) }
+                      .map { EmployeeMapper().mapEmployee(it) }
                       .onEach { Log.i(TAG_EMPLOYEE, it.toString()) }
 
                   initRecycler(employees)
@@ -39,15 +40,6 @@ class EmployeeReport : AppCompatActivity() {
               }
           })
 
-    }
-
-    private fun mapEmployee(employeeEntity: EmployeeEntity): Employee {
-        return Employee(
-            employeeEntity.name,
-            employeeEntity.position,
-            employeeEntity.sex,
-            employeeEntity.salary,
-            employeeEntity.status)
     }
 
     private fun initRecycler(employees: List<Employee>) {

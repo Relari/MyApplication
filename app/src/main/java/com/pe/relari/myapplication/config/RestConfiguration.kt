@@ -4,7 +4,7 @@ import com.pe.relari.myapplication.business.dao.repository.EmployeeApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val URI: String = "https://employee-firebase.herokuapp.com/"
+private const val URI: String = "https://employee-firebase.herokuapp.com/"
 
 class RestConfiguration {
 

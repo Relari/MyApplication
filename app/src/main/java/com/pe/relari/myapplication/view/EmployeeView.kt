@@ -6,17 +6,9 @@ import com.pe.relari.myapplication.business.model.api.EmployeeResponse
 import com.pe.relari.myapplication.business.model.business.Employee
 import com.pe.relari.myapplication.business.service.EmployeeService
 import com.pe.relari.myapplication.business.service.impl.EmployeeServiceImpl
-import io.reactivex.Completable
-import io.reactivex.Observable
-import io.reactivex.Single
 
-class EmployeeView(private val employeeService: EmployeeService = EmployeeServiceImpl()) {
-
-
-  fun findAll(): Observable<EmployeeResponse> {
-    return employeeService.findAll()
-            .map { mapEmployeeResponse(it) }
-  }
+class EmployeeView(
+    private val employeeService: EmployeeService = EmployeeServiceImpl()) {
 
   private fun mapEmployeeResponse(employee: Employee): EmployeeResponse {
         return EmployeeResponse(
@@ -24,11 +16,6 @@ class EmployeeView(private val employeeService: EmployeeService = EmployeeServic
             employee.position,
             employee.sex,
             employee.salary)
-  }
-
-  fun save(employeeRequest: EmployeeRequest): Completable {
-    return Single.fromCallable { mapEmployee(employeeRequest) }
-            .flatMapCompletable(employeeService::save)
   }
 
   private fun mapEmployee(employeeRequest: EmployeeRequest): Employee {
@@ -40,13 +27,13 @@ class EmployeeView(private val employeeService: EmployeeService = EmployeeServic
           true)
   }
 
-  fun save2(employeeRequest: EmployeeRequest) {
+  fun save(employeeRequest: EmployeeRequest) {
      val employee = mapEmployee(employeeRequest)
-     employeeService.save2(employee)
+     employeeService.save(employee)
   }
 
-  fun findAll2(): List<EmployeeResponse> {
-    return employeeService.findAll2()
+  fun findAll(): List<EmployeeResponse> {
+    return employeeService.findAll()
         .map { mapEmployeeResponse(it) }
   }
 }

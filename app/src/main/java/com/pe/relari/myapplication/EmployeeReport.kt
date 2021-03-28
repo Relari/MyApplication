@@ -20,9 +20,8 @@ class EmployeeReport : AppCompatActivity() {
         setContentView(R.layout.activity_employee_report)
 
         val restConfiguration = RestConfiguration()
-        restConfiguration.employeeRepository().findAll2()
 
-        restConfiguration.employeeRepository().findAll2()
+        restConfiguration.employeeRepository().findAll()
           .enqueue(object : Callback<List<EmployeeEntity>> {
               override fun onFailure(call: Call<List<EmployeeEntity>>?, t: Throwable?) {
                   // failure

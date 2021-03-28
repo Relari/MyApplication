@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pe.relari.myapplication.business.model.business.Employee
+import com.pe.relari.myapplication.business.model.business.GenderEnum
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_employee.view.*
 
 
-private const val MALE_CODE = "M"
 private const val IMAGE_MALE: String = "https://cdn.icon-icons.com/icons2/1465/PNG/512/154manofficeworker2_100459.png"
 private const val IMAGE_FEMALE: String = "https://cdn.icon-icons.com/icons2/1465/PNG/512/156womanofficeworker2_100687.png"
 
@@ -33,7 +33,7 @@ class EmployeeAdapter(
             view.tvName.text = Employee.name
             view.tvPosition.text = Employee.position
 
-            if (MALE_CODE == Employee.sex) {
+            if (GenderEnum.M.name == Employee.sex) {
                 Picasso.get().load(IMAGE_MALE).into(view.imgSex)
             } else {
                 Picasso.get().load(IMAGE_FEMALE).into(view.imgSex)

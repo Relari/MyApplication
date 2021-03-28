@@ -7,6 +7,8 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import com.pe.relari.myapplication.business.model.api.EmployeeRequest
+import com.pe.relari.myapplication.business.model.business.Gender
+import com.pe.relari.myapplication.business.model.business.GenderEnum
 import com.pe.relari.myapplication.view.EmployeeView
 
 class EmployeeRegister : AppCompatActivity() {
@@ -22,8 +24,7 @@ class EmployeeRegister : AppCompatActivity() {
 
             val employeeRequest = buildEmployeeRequest()
 
-//            employeeView.save(employeeRequest)
-            employeeView.save2(employeeRequest)
+            employeeView.save(employeeRequest)
 
             Toast.makeText(this, employeeRequest.toString(), Toast.LENGTH_LONG).show()
         }
@@ -49,10 +50,10 @@ class EmployeeRegister : AppCompatActivity() {
 
     private fun genders(): List<Gender> {
 
-        val gender1 = Gender(GenderEnum.M, "Male")
-        val gender2 = Gender(GenderEnum.F, "Female")
+        val genderMale = Gender(GenderEnum.M, "Male")
+        val genderFemale = Gender(GenderEnum.F, "Female")
 
-        return listOf(gender1, gender2)
+        return listOf(genderMale, genderFemale)
     }
 
     private fun findByGenderDescription(genderDescription: String): String {
@@ -64,6 +65,3 @@ class EmployeeRegister : AppCompatActivity() {
 
 }
 
-data class Gender(val code: GenderEnum, val description: String)
-
-enum class GenderEnum { M, F }

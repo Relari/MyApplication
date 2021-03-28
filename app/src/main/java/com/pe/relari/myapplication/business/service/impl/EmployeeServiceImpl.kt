@@ -5,24 +5,15 @@ import com.pe.relari.myapplication.business.dao.impl.EmployeeDaoImpl
 import com.pe.relari.myapplication.business.model.business.Employee
 import com.pe.relari.myapplication.business.service.EmployeeService
 
-import io.reactivex.Completable
-import io.reactivex.Observable
+class EmployeeServiceImpl(
+  private val employeeDao: EmployeeDao = EmployeeDaoImpl()) : EmployeeService {
 
-class EmployeeServiceImpl(private val employeeDao: EmployeeDao = EmployeeDaoImpl()) : EmployeeService {
-  override fun save2(employee: Employee) {
-    employeeDao.save2(employee)
+  override fun save(employee: Employee) {
+    employeeDao.save(employee)
   }
 
-  override fun save(employee: Employee): Completable {
-    return employeeDao.save(employee)
-  }
-
-  override fun findAll(): Observable<Employee> {
+  override fun findAll(): List<Employee> {
     return employeeDao.findAll()
-  }
-
-  override fun findAll2(): List<Employee> {
-    return employeeDao.findAll2()
   }
 
 }
